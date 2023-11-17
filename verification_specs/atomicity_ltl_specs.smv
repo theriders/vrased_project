@@ -19,13 +19,10 @@
 
     pc_not_in_srom := !pc_in_srom; 
 
--- Premisses specifications---
-
--- Reset correctness
-LTLSPEC G ("reset" -> (("reset" U "pc" = RESET_HANDLER) | G("reset")));
 
 -- Atomicity Rules: (1) cannot leave in the middle of ROM code and (2) cannot jump into the middle of ROM code ---
 LTLSPEC G ( !"reset" & pc_in_srom & !next_pc_in_srom -> "pc" = LAST_SMEM_ADDR | next("reset") );
 LTLSPEC G ( !"reset" & !pc_in_srom & next_pc_in_srom -> next("pc") = SMEM_BASE | next("reset") );
-LTLSPEC G ( "irq" & pc_in_srom -> "reset");
+-- irq not used in atomicity.v
+--LTLSPEC G ( "irq" & pc_in_srom -> "reset");
 

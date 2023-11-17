@@ -27,13 +27,7 @@
 -- Reset correctness
 LTLSPEC G ("reset" -> (("reset" U "pc" = RESET_HANDLER) | G("reset")));
 
+-- DMA write cant happen while in ROM and irq or dma_en
+LTLSPEC G ((("dma_en" | "irq") & pc_in_srom) -> "reset");
 
--- DMA cant access the key
-LTLSPEC G (dma_access_key -> "reset");
-
--- DMA write cant happen while in ROM
-LTLSPEC G (("dma_en" & pc_in_srom) -> "reset");
-
--- Disallow any DMA access to the exclusive stack
-LTLSPEC G (dma_access_X_stack -> "reset");
 

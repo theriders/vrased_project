@@ -30,8 +30,5 @@ LTLSPEC G ("reset" -> (("reset" U "pc" = RESET_HANDLER) | G("reset")));
 -- DMA cant access the key
 LTLSPEC G (dma_access_key -> "reset");
 
--- DMA write cant happen while in ROM
-LTLSPEC G (("dma_en" & pc_in_srom) -> "reset");
-
 
 
