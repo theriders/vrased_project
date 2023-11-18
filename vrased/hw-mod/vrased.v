@@ -4,6 +4,7 @@
 `include "dma_AC.v"	
 `include "dma_detect.v"	
 `include "dma_X_stack.v"
+`include "logger.v"
 
 `ifdef OMSP_NO_INCLUDE
 `else
@@ -22,7 +23,12 @@ module vrased (
 
     irq,
     
-    reset
+    reset,
+
+    re,
+    rd_addr,
+    rd_data,
+    clr_ram
 );
 input           clk;
 input   [15:0]  pc;
@@ -33,6 +39,10 @@ input   [15:0]  dma_addr;
 input           dma_en;
 input           irq;
 output          reset;
+input           re;
+input   [15:0]  rd_addr;
+output  [37:0]  rd_data;
+input           clr_ram;
 
 // MACROS ///////////////////////////////////////////
 parameter SDATA_BASE = 16'h400;
@@ -137,6 +147,26 @@ dma_X_stack #(
     .dma_addr   (dma_addr),
     .dma_en     (dma_en),
     .reset      (dma_X_stack_reset) 
+);
+
+logger logger_0(
+    .clk                (clk),
+    .X_stack_reset      (X_stack_reset),
+    .AC_reset           (AC_reset),
+    .dma_AC_reset       (dma_AC_reset),
+    .dma_detect_reset   (dma_detect_reset),
+    .dma_X_stack_reset  (dma_X_stack_reset),
+    .atomicity_reset    (atomicity_reset),
+    .data_addr          (data_addr),
+    .data_en            (data_en),
+    .data_wr            (data_wr),
+    .dma_addr           (dma_addr),
+    .dma_en             (dma_en),
+    .pc                 (pc),
+    .re                 (re),
+    .rd_addr            (rd_addr),
+    .rd_data            (rd_data),
+    .clr_ram            (clr_ram)
 );
 
 assign reset = X_stack_reset | AC_reset | dma_AC_reset | dma_detect_reset | dma_X_stack_reset | atomicity_reset;
