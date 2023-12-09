@@ -22,6 +22,9 @@ verify :
 verify_atomicity :
 	sh verif-tools/run_atomicity
 
+verify_ac :
+	sh verif-tools/run_ac
+
 verify_dma_detect :
 	sh verif-tools/run_detect
 
