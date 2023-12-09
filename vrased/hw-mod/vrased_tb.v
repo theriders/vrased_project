@@ -12,9 +12,6 @@ module tb;
     reg dma_en;
     reg irq;
     wire reset;
-    reg re;
-    reg [15:0] rd_addr;
-    wire [36:0] rd_data;
     reg clr_ram;
 
 vrased u0 (
@@ -27,16 +24,13 @@ vrased u0 (
     .dma_en(dma_en),
     .irq(irq),
     .reset(reset),
-    .re(re),
-    .rd_addr(rd_addr),
-    .rd_data(rd_data),
     .clr_ram(clr_ram)
     );
 
 always #10 clk = ~clk;
 
 initial begin
-    {clk, pc, data_en, data_wr, data_addr, dma_addr, dma_en, irq, re, rd_addr, clr_ram} <= 0;
+    {clk, pc, data_en, data_wr, data_addr, dma_addr, dma_en, irq, clr_ram} <= 0;
     repeat (2) @ (posedge clk);
     clr_ram <= 1;
     repeat (2) @ (posedge clk);

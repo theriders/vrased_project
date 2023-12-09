@@ -1,6 +1,6 @@
 module ram
     #(
-        parameter ADDR_WIDTH = 8,
+        parameter ADDR_WIDTH = 16,
         parameter DATA_WIDTH = 37)
     (
         input clk,

@@ -178,7 +178,7 @@ ram ram_0(
     .we                 (we),
     .re                 (1'b0),
     .rd_addr            (16'd0),
-    .rd_data            (37'd0)
+    .rd_data            ()
 );
 
 // ram ram_0(

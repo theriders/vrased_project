@@ -41,6 +41,7 @@ output  reg we;
 
 
 reg [36:0] wr_data_s;
+reg we_s;
 // reg     [36:0] wr_data;
 // reg     we;
 
@@ -58,7 +59,7 @@ always @*
             wr_data_s[17:2] = data_addr;
             wr_data_s[1] = data_en;
             wr_data_s[0] = data_wr;
-            we = 1;
+            we_s = 1;
         end else if(AC_reset) begin
             //assign wr_data_s = {3'b001, pc, data_addr, data_en, 1'b0};
             wr_data_s[36:34] = 3'b001;
@@ -66,13 +67,13 @@ always @*
             wr_data_s[17:2] = data_addr;
             wr_data_s[1] = data_en;
             wr_data_s[0] = 1'b0;
-            we = 1;
+            we_s = 1;
         end else if(atomicity_reset) begin
             //assign wr_data_s = {3'b010, pc, 18'd0};
             wr_data_s[36:34] = 3'b010;
             wr_data_s[33:18] = pc;
             wr_data_s[17:0] = 18'd0;
-            we = 1;
+            we_s = 1;
         end else if(dma_AC_reset) begin
             //assign wr_data_s = {3'b011, pc, dma_addr, dma_en, 1'b0};
             wr_data_s[36:34] = 3'b011;
@@ -80,7 +81,7 @@ always @*
             wr_data_s[17:2] = dma_addr;
             wr_data_s[1] = dma_en;
             wr_data_s[0] = 1'b0;
-            we = 1;
+            we_s = 1;
         end else if(dma_detect_reset) begin
             //assign wr_data_s = {3'b100, pc, dma_addr, dma_en, 1'b0};
             wr_data_s[36:34] = 3'b100;
@@ -88,7 +89,7 @@ always @*
             wr_data_s[17:2] = dma_addr;
             wr_data_s[1] = dma_en;
             wr_data_s[0] = 1'b0;
-            we = 1;
+            we_s = 1;
         end else if(dma_X_stack_reset) begin
             //assign wr_data_s = {3'b101, pc, dma_addr, dma_en, 1'b0};
             wr_data_s[36:34] = 3'b101;
@@ -96,16 +97,17 @@ always @*
             wr_data_s[17:2] = dma_addr;
             wr_data_s[1] = dma_en;
             wr_data_s[0] = 1'b0;
-            we = 1;
+            we_s = 1;
         end else begin
             wr_data_s = 37'd0;
-            we = 0;
+            we_s = 0;
         end
 
 
 always @(posedge clk)
 begin
 
+    we <= we_s;
     wr_data <= wr_data_s;
 
     if (clr_ram) begin
