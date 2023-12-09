@@ -22,6 +22,9 @@ verify :
 verify_atomicity :
 	sh verif-tools/run_atomicity
 
+verify_logger :
+	sh verif-tools/run_logger
+
 verify_ac :
 	sh verif-tools/run_ac
 
