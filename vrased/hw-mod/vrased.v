@@ -147,7 +147,8 @@ dma_X_stack #(
 );
 
 wire [15:0] wr_addr;
-wire [36:0] wr_data;
+wire [33:0] wr_data;
+wire [2:0]  opcode;
 wire        we;
 
 logger logger_0(
@@ -167,14 +168,20 @@ logger logger_0(
     .we                 (we),
     .wr_addr            (wr_addr),
     .wr_data            (wr_data),
-    .clr_ram            (clr_ram)
+    .clr_ram            (clr_ram),
+    .opcode             (opcode)
 );
+
+wire [36:0] ram_wr_data;
+
+assign ram_wr_data[36:34] = opcode;
+assign ram_wr_data[33:0] = wr_data;
 
 ram ram_0(
     .clk                (clk),
     .clr                (clr_ram),
     .wr_addr            (wr_addr),
-    .wr_data            (wr_data),
+    .wr_data            (ram_wr_data),
     .we                 (we),
     .re                 (1'b0),
     .rd_addr            (16'd0),

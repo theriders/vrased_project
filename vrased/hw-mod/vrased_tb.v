@@ -67,7 +67,11 @@ initial begin
     dma_en <= 0;
     repeat (4) @ (posedge clk);
 
+    //dma detect reset test
+    repeat (1) @ (posedge clk);
     
+
+
     #20 $finish;
 
 end
