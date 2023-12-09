@@ -19,6 +19,7 @@ sh ./verif-tools/verilog2smv.sh ./build-verif/vrased.v ./build-verif/vrased_gene
 sed -i "s/IVAR/VAR/g" ./build-verif/vrased_generated.smv # Hacky here since IVAR doesnt work properly
 echo '#include "ltl_specs.smv"' >> ./build-verif/vrased_generated.smv
 
-./verif-tools/NuSMV -pre cpp ./build-verif/vrased_generated.smv
+#./verif-tools/NuSMV -pre cpp ./build-verif/vrased_generated.smv
+./verif-tools/nuXmv -pre cpp ./build-verif/vrased_generated.smv
 
 #rm -rf build-verif
