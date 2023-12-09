@@ -66,7 +66,7 @@ begin
             wr_data[17:2] = data_addr;
             wr_data[1] = data_en;
             wr_data[0] = data_wr;
-            assign we = 1;
+            we = 1;
         end else if(AC_reset) begin
             //assign wr_data = {3'b001, pc, data_addr, data_en, 1'b0};
             wr_data[36:34] = 3'b001;
@@ -74,13 +74,13 @@ begin
             wr_data[17:2] = data_addr;
             wr_data[1] = data_en;
             wr_data[0] = 1'b0;
-            assign we = 1;
+            we = 1;
         end else if(atomicity_reset) begin
             //assign wr_data = {3'b010, pc, 18'd0};
             wr_data[36:34] = 3'b010;
             wr_data[33:18] = pc;
             wr_data[17:0] = 18'd0;
-            assign we = 1;
+            we = 1;
         end else if(dma_AC_reset) begin
             //assign wr_data = {3'b011, pc, dma_addr, dma_en, 1'b0};
             wr_data[36:34] = 3'b011;
@@ -88,7 +88,7 @@ begin
             wr_data[17:2] = dma_addr;
             wr_data[1] = dma_en;
             wr_data[0] = 1'b0;
-            assign we = 1;
+            we = 1;
         end else if(dma_detect_reset) begin
             //assign wr_data = {3'b100, pc, dma_addr, dma_en, 1'b0};
             wr_data[36:34] = 3'b100;
@@ -96,7 +96,7 @@ begin
             wr_data[17:2] = dma_addr;
             wr_data[1] = dma_en;
             wr_data[0] = 1'b0;
-            assign we = 1;
+            we = 1;
         end else if(dma_X_stack_reset) begin
             //assign wr_data = {3'b101, pc, dma_addr, dma_en, 1'b0};
             wr_data[36:34] = 3'b101;
@@ -104,10 +104,10 @@ begin
             wr_data[17:2] = dma_addr;
             wr_data[1] = dma_en;
             wr_data[0] = 1'b0;
-            assign we = 1;
+            we = 1;
         end else begin
             wr_data = 37'd0;
-            assign we = 0;
+            we = 0;
         end
 
     if (clr_ram) begin
