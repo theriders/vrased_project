@@ -56,3 +56,6 @@ LTLSPEC G (dma_access_X_stack -> "reset");
 --it s Weak until http://nusmv.fbk.eu/courses/icaps03/icaps03-mct.pdf p31
 -----------------------------
 
+-- Logger specs
+--LTLSPEC G ("reset" -> "we");
+
