@@ -54,7 +54,7 @@ initial
 always @*
     if(X_stack_reset == 1'b1) begin
             //assign wr_data_s = {3'b000, pc, data_addr, data_en, data_wr};
-            wr_data_s[36:34] = 3'b000;
+            wr_data_s[36:34] = 3'b111;
             wr_data_s[33:18] = pc;
             wr_data_s[17:2] = data_addr;
             wr_data_s[1] = data_en;
