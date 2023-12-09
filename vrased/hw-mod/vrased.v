@@ -149,40 +149,51 @@ dma_X_stack #(
     .reset      (dma_X_stack_reset) 
 );
 
-wire [15:0] wr_addr;
-wire [36:0] wr_data;
-wire        we;
+// wire [15:0] wr_addr;
+// wire [36:0] wr_data;
+// wire        we;
 
-logger logger_0(
-    .clk                (clk),
-    .X_stack_reset      (X_stack_reset),
-    .AC_reset           (AC_reset),
-    .dma_AC_reset       (dma_AC_reset),
-    .dma_detect_reset   (dma_detect_reset),
-    .dma_X_stack_reset  (dma_X_stack_reset),
-    .atomicity_reset    (atomicity_reset),
-    .data_addr          (data_addr),
-    .data_en            (data_en),
-    .data_wr            (data_wr),
-    .dma_addr           (dma_addr),
-    .dma_en             (dma_en),
-    .pc                 (pc),
-    .we                 (we),
-    .rd_addr            (wr_addr),
-    .rd_data            (rd_addr),
-    .clr_ram            (clr_ram)
-);
+// logger logger_0(
+//     .clk                (clk),
+//     .X_stack_reset      (X_stack_reset),
+//     .AC_reset           (AC_reset),
+//     .dma_AC_reset       (dma_AC_reset),
+//     .dma_detect_reset   (dma_detect_reset),
+//     .dma_X_stack_reset  (dma_X_stack_reset),
+//     .atomicity_reset    (atomicity_reset),
+//     .data_addr          (data_addr),
+//     .data_en            (data_en),
+//     .data_wr            (data_wr),
+//     .dma_addr           (dma_addr),
+//     .dma_en             (dma_en),
+//     .pc                 (pc),
+//     .we                 (we),
+//     .rd_addr            (wr_addr),
+//     .rd_data            (rd_addr),
+//     .clr_ram            (clr_ram)
+// );
 
-ram ram_0(
-    .clk                (clk),
-    .clr                (clr_ram),
-    .wr_addr            (wr_addr),
-    .wr_data            (wr_data),
-    .we                 (we),
-    .re                 (re),
-    .rd_addr            (rd_addr),
-    .rd_data            (rd_data)
-);
+// ram ram_0(
+//     .clk                (clk),
+//     .clr                (clr_ram),
+//     .wr_addr            (wr_addr),
+//     .wr_data            (wr_data),
+//     .we                 (we),
+//     .re                 (re),
+//     .rd_addr            (rd_addr),
+//     .rd_data            (rd_data)
+// );
+
+// ram ram_0(
+//     .clk                (clk),
+//     .clr                (clr_ram),
+//     .wr_addr            (wr_addr),
+//     .wr_data            (wr_data),
+//     .we                 (we),
+//     .re                 (re),
+//     .rd_addr            (rd_addr),
+//     .rd_data            (rd_data)
+// );
 
 assign reset = X_stack_reset | AC_reset | dma_AC_reset | dma_detect_reset | dma_X_stack_reset | atomicity_reset;
 
