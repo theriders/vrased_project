@@ -17,7 +17,10 @@ module logger
     re,
     rd_addr,
     rd_data,
-    clr_ram
+    clr_ram,
+    wr_data,
+    wr_addr,
+    we
 );
 
 input   clk;
@@ -37,11 +40,17 @@ input   re;
 input   [15:0] rd_addr;
 output  [15:0] rd_data;
 input   clr_ram;
+output  reg wr_data;
+output  reg wr_addr;
+output  reg we;
 
-reg     [36:0] wr_data;
-reg     we;
 
-reg     [15:0] wr_addr;
+
+
+// reg     [36:0] wr_data;
+// reg     we;
+
+// reg     [15:0] wr_addr;
 initial
     begin
         wr_addr = 16'd0;
@@ -84,19 +93,7 @@ begin
     end
 end
 
-ram #(
-    .ADDR_WIDTH (8),
-    .DATA_WIDTH (37)
-) ram_0 (
-    .clk        (clk),
-    .wr_addr    (wr_addr),
-    .wr_data    (wr_data),
-    .we         (we),
-    .re         (re),
-    .rd_addr    (rd_addr),
-    .rd_data    (rd_data),
-    .clr        (clr_ram)
-);
+
 
 endmodule
 
