@@ -22,7 +22,7 @@
 #ifndef VERILOG2SMV_YOSYS_PLUGIN_NUXMV_H
 #define VERILOG2SMV_YOSYS_PLUGIN_NUXMV_H
 
-#include "math.h"
+
 #include "kernel/yosys.h"
 #include "kernel/sigtools.h"
 

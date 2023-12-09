@@ -19,7 +19,7 @@
 
 #include "kernel/yosys.h"
 #include "kernel/sigtools.h"
-#include "math.h"
+#include <math.h>
 
 #undef LOG_MATRICES
 #undef PYPLOT_EDGES

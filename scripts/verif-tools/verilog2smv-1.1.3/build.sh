@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #echo "=> Downloading Yosys"
 mkdir lib
@@ -7,6 +7,7 @@ cd lib
 unzip yosys-master.zip
 rm -rf yosys
 mv yosys-master yosys
+patch -p0 < yosis-patch.diff
 
 echo "=> Configurating Yosys"
 sed -i -e 's/ENABLE_TCL[[:space:]]*:=[[:space:]]*1/ENABLE_TCL := 0/g' yosys/Makefile

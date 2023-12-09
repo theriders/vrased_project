@@ -21,6 +21,7 @@
 
 #include "nuxmv.h"
 #include <ctime>
+#include <math.h>
 
 const std::string VERILOG2SMV_VERSION = "verilog2smv-1.1.2";
 

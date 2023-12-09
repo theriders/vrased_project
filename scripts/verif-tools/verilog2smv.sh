@@ -4,8 +4,8 @@
 # Script  Verilog to nuXmv
 #
 
-YOSYS=/home/rohan/vrased/scripts/verif-tools/verilog2smv-1.1.2/lib/yosys/yosys
-NUXMV_PLUGIN=/home/rohan/vrased/scripts/verif-tools/verilog2smv-1.1.2/nuxmv.so
+YOSYS=/home/rohan/vrased_project/scripts/verif-tools/verilog2smv-1.1.3/lib/yosys/yosys
+NUXMV_PLUGIN=/home/rohan/vrased_project/scripts/verif-tools/verilog2smv-1.1.3/nuxmv.so
 ENABLE_MEM_EXPANSION=1
 
 if [ "$#" -ne 3 ]; then

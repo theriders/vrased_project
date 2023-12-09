@@ -5,8 +5,8 @@ install-clean :
 
 install :
 	cd verif-tools ; \
-	tar -vxjf verilog2smv-1.1.2.tar.bz2 ; \
-	cd verilog2smv-1.1.2 ; \
+	tar -vxzf verilog2smv-1.1.3.tar.gz ; \
+	cd verilog2smv-1.1.3 ; \
 	sh build.sh ; \
 	cp verilog2smv.sh ../
 
