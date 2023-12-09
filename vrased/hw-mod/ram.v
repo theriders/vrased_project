@@ -41,5 +41,5 @@ module ram
             tmp_data <= mem[rd_addr];
     end
 
-    assign rd_data = !we & re ? tmp_data : '0;
+    assign rd_data = !we & re ? tmp_data : {37{1'b0}};
 endmodule
