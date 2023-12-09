@@ -21,4 +21,4 @@ echo '#include "atomicity_ltl_specs.smv"' >> ./build-verif/vrased_generated.smv
 
 ./verif-tools/NuSMV -pre cpp ./build-verif/vrased_generated.smv
 
-rm -rf build-verif
+#rm -rf build-verif
