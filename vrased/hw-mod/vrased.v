@@ -25,10 +25,7 @@ module vrased (
     
     reset,
 
-    re,
-    rd_addr,
-    rd_data,
-    clr_ram
+    clr_ram,
 );
 input           clk;
 input   [15:0]  pc;
@@ -39,9 +36,9 @@ input   [15:0]  dma_addr;
 input           dma_en;
 input           irq;
 output          reset;
-input           re;
-input   [15:0]  rd_addr;
-output  [37:0]  rd_data;
+// input           re;
+// input   [15:0]  rd_addr;
+// output  [36:0]  rd_data;
 input           clr_ram;
 
 // MACROS ///////////////////////////////////////////
@@ -149,40 +146,40 @@ dma_X_stack #(
     .reset      (dma_X_stack_reset) 
 );
 
-// wire [15:0] wr_addr;
-// wire [36:0] wr_data;
-// wire        we;
+wire [15:0] wr_addr;
+wire [36:0] wr_data;
+wire        we;
 
-// logger logger_0(
-//     .clk                (clk),
-//     .X_stack_reset      (X_stack_reset),
-//     .AC_reset           (AC_reset),
-//     .dma_AC_reset       (dma_AC_reset),
-//     .dma_detect_reset   (dma_detect_reset),
-//     .dma_X_stack_reset  (dma_X_stack_reset),
-//     .atomicity_reset    (atomicity_reset),
-//     .data_addr          (data_addr),
-//     .data_en            (data_en),
-//     .data_wr            (data_wr),
-//     .dma_addr           (dma_addr),
-//     .dma_en             (dma_en),
-//     .pc                 (pc),
-//     .we                 (we),
-//     .rd_addr            (wr_addr),
-//     .rd_data            (rd_addr),
-//     .clr_ram            (clr_ram)
-// );
+logger logger_0(
+    .clk                (clk),
+    .X_stack_reset      (X_stack_reset),
+    .AC_reset           (AC_reset),
+    .dma_AC_reset       (dma_AC_reset),
+    .dma_detect_reset   (dma_detect_reset),
+    .dma_X_stack_reset  (dma_X_stack_reset),
+    .atomicity_reset    (atomicity_reset),
+    .data_addr          (data_addr),
+    .data_en            (data_en),
+    .data_wr            (data_wr),
+    .dma_addr           (dma_addr),
+    .dma_en             (dma_en),
+    .pc                 (pc),
+    .we                 (we),
+    .wr_addr            (wr_addr),
+    .wr_data            (wr_data),
+    .clr_ram            (clr_ram)
+);
 
-// ram ram_0(
-//     .clk                (clk),
-//     .clr                (clr_ram),
-//     .wr_addr            (wr_addr),
-//     .wr_data            (wr_data),
-//     .we                 (we),
-//     .re                 (re),
-//     .rd_addr            (rd_addr),
-//     .rd_data            (rd_data)
-// );
+ram ram_0(
+    .clk                (clk),
+    .clr                (clr_ram),
+    .wr_addr            (wr_addr),
+    .wr_data            (wr_data),
+    .we                 (we),
+    .re                 (1'b0),
+    .rd_addr            (16'd0),
+    .rd_data            (37'd0)
+);
 
 // ram ram_0(
 //     .clk                (clk),
