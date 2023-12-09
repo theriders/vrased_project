@@ -21,13 +21,15 @@ output          reset;
 parameter SDATA_BASE = 16'h400;
 parameter SDATA_SIZE = 16'hC00;
 //
-parameter HMAC_BASE = 16'h8000;
+//parameter HMAC_BASE = 16'h8000;
+parameter HMAC_BASE = 16'h0230;
 parameter HMAC_SIZE = 16'h0020;
 //
 parameter SMEM_BASE = 16'hA000;
 parameter SMEM_SIZE = 16'h4000;
 //
-parameter KMEM_BASE = 16'hFEFE;
+//parameter KMEM_BASE = 16'hFEFE;
+parameter KMEM_BASE = 16'h6A00;
 parameter KMEM_SIZE = 16'h0040;
 /////////////////////////////////////////////////////
 
