@@ -14,9 +14,6 @@ module logger
     dma_addr,
     dma_en,
     pc,
-    re,
-    rd_addr,
-    rd_data,
     clr_ram,
     wr_data,
     wr_addr,
@@ -36,9 +33,6 @@ input   data_wr;
 input   [15:0]  dma_addr;
 input   dma_en;
 input   [15:0]  pc;
-input   re;
-input   [15:0] rd_addr;
-output  [36:0] rd_data;
 input   clr_ram;
 output  reg [36:0] wr_data;
 output  reg [15:0] wr_addr;
