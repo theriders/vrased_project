@@ -69,7 +69,21 @@ initial begin
 
     //dma detect reset test
     repeat (1) @ (posedge clk);
-    
+    dma_addr <= 16'h6000;
+    pc <= 16'hA000;
+    dma_en <= 1;
+    repeat (1) @ (posedge clk);
+    pc <= 16'h0000;
+    dma_en <= 0;
+    repeat (4) @ (posedge clk);
+
+    //dma x stack reset test
+    repeat (1) @ (posedge clk);
+    dma_addr <= 16'h0400;
+    dma_en <= 1;
+    repeat (1) @ (posedge clk);
+    dma_en <= 0;
+    repeat (4) @ (posedge clk);
 
 
     #20 $finish;
