@@ -150,6 +150,22 @@ wire [15:0] wr_addr;
 wire [33:0] wr_data;
 wire [2:0]  opcode;
 wire        we;
+reg [15:0] data_addr_r;
+reg [15:0] dma_addr_r;
+reg [15:0] pc_r;
+reg data_en_r;
+reg dma_en_r;
+reg data_wr_r;
+
+always @(posedge clk)
+begin
+    pc_r <= pc;
+    data_addr_r <= data_addr;
+    dma_addr_r <= dma_addr;
+    data_en_r <= data_en;
+    dma_en_r <= dma_en;
+    data_wr_r <= data_wr;
+end
 
 logger logger_0(
     .clk                (clk),
@@ -159,12 +175,12 @@ logger logger_0(
     .dma_detect_reset   (dma_detect_reset),
     .dma_X_stack_reset  (dma_X_stack_reset),
     .atomicity_reset    (atomicity_reset),
-    .data_addr          (data_addr),
-    .data_en            (data_en),
-    .data_wr            (data_wr),
-    .dma_addr           (dma_addr),
-    .dma_en             (dma_en),
-    .pc                 (pc),
+    .data_addr          (data_addr_r),
+    .data_en            (data_en_r),
+    .data_wr            (data_wr_r),
+    .dma_addr           (dma_addr_r),
+    .dma_en             (dma_en_r),
+    .pc                 (pc_r),
     .we                 (we),
     .wr_addr            (wr_addr),
     .wr_data            (wr_data),
