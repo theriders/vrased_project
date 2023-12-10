@@ -5,7 +5,7 @@
 - LTL specs located in verification_specs
 - RTL additions (logger.v & ram.v) located in vrased/hw-mod/
 
-Install depedencies below and follow instructions VRASED Verification section to run verification. 'cat makefile' to view avilable options.
+Install depedencies below and follow instructions in 'VRASED Verification' section to run verification. 'cat makefile' to view available options.
 
 
 # VRASED: Verifiable Remote Attestation for Simple Embedded Devices
