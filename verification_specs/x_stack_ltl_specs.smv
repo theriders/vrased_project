@@ -26,7 +26,6 @@
 -- Exclusive Access to Secure Stack: (1) Only ROM code can read/write the stack and (2) ROM code cannot write outside the stack ---
 LTLSPEC G ((pc_not_in_srom & ("r_en" | "w_en") & daddr_in_sdata) -> "reset");
 
--- this one requires some more work
 LTLSPEC G ((pc_in_srom & "w_en" & daddr_not_in_sdata & daddr_not_in_HMAC) -> "reset");
 
 
