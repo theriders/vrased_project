@@ -1,3 +1,13 @@
+*** CODE MODIFIED FOR PROJECT **
+
+- verification can be run using makefile in scripts folder
+- modified scripts and updated nusxv and verilog2smv executables run by make are located in scripts/verif-tools/
+- LTL specs located in verification_specs
+- RTL additions (logger.v & ram.v) located in vrased/hw-mod/
+
+Install depedencies below and follow instructions VRASED Verification section to run verification. 'cat makefile' to view avilable options.
+
+
 # VRASED: Verifiable Remote Attestation for Simple Embedded Devices
 
 Remote Attestation (RA) is a distinct security service that allows a trusted verifier to
