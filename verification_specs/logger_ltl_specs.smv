@@ -22,36 +22,29 @@ LTLSPEC G(reset -> bool("we"));
 
 LTLSPEC G(!reset -> !bool("we"));
 
--- X_stack_reset (1)
 LTLSPEC G("X_stack_reset" -> (bool("we") & ("opcode" = 0b3_111)));
 
--- AC_reset (2)
 --LTLSPEC G(("AC_reset" & !"X_stack_reset") -> ((bool("we") & ("opcode" = 0b3_001)) | X(bool("we") & ("opcode" = 0b3_001))));
 
---LTLSPEC G(("AC_reset" & !"X_stack_reset") -> X(bool("we") & ("opcode" = 0b3_001)));
 LTLSPEC G(("AC_reset" & !"X_stack_reset") -> bool("we") & ("opcode" = 0b3_001));
 
 -- atomicity_reset
 
---LTLSPEC G(("atomicity_reset" & !"X_stack_reset" & !"AC_reset") -> ((bool("we") & ("opcode" = 0b3_010)) | X(bool("we") & ("opcode" = 0b3_010))));
 
 LTLSPEC G(("atomicity_reset" & !"X_stack_reset" & !"AC_reset") -> (bool("we") & ("opcode" = 0b3_010)));
 
 -- dma_AC_reset 
 
---LTLSPEC G(("dma_AC_reset" & !"atomicity_reset" & !"X_stack_reset" & !"AC_reset") -> ((bool("we") & ("opcode" = 0b3_011)) | X(bool("we") & ("opcode" = 0b3_011))));
 
 LTLSPEC G(("dma_AC_reset" & !"atomicity_reset" & !"X_stack_reset" & !"AC_reset") -> ((bool("we") & ("opcode" = 0b3_011))));
 
 -- dma_detect_reset 
 
---LTLSPEC G(("dma_detect_reset" & !"dma_AC_reset" & !"atomicity_reset" & !"X_stack_reset" & !"AC_reset") -> ((bool("we") & ("opcode" = 0b3_100)) | X(bool("we") & ("opcode" = 0b3_100))));
 
 LTLSPEC G(("dma_detect_reset" & !"dma_AC_reset" & !"atomicity_reset" & !"X_stack_reset" & !"AC_reset") -> ((bool("we") & ("opcode" = 0b3_100)) ));
 
 -- dma_X_stack_reset
 
---LTLSPEC G(("dma_X_stack_reset" & !"dma_detect_reset" & !"dma_AC_reset" & !"atomicity_reset" & !"X_stack_reset" & !"AC_reset") -> ((bool("we") & ("opcode" = 0b3_101)) | X(bool("we") & ("opcode" = 0b3_101))));
 
 LTLSPEC G(("dma_X_stack_reset" & !"dma_detect_reset" & !"dma_AC_reset" & !"atomicity_reset" & !"X_stack_reset" & !"AC_reset") -> ((bool("we") & ("opcode" = 0b3_101)) ));
 
